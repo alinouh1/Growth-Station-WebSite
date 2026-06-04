@@ -1,13 +1,17 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { GrowthStationLanding } from "../components/landing/GrowthStationLanding";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Growth Station | Strategic Growth Partner — Egypt & GCC" },
+    {
+      name: "description",
+      content:
+        "We partner with ambitious businesses across Egypt & the GCC to build powerful brands and drive measurable growth.",
+    },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <GrowthStationLanding />;
 }

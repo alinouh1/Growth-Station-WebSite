@@ -1,0 +1,255 @@
+import type { Dictionary } from "./types";
+
+export const en: Dictionary = {
+  meta: {
+    title: "Growth Station | Strategic Growth Partner — Egypt & GCC",
+    description:
+      "We partner with ambitious businesses across Egypt & the GCC to build powerful brands and drive measurable growth.",
+  },
+  nav: {
+    home: "Home",
+    services: "Services",
+    portfolio: "Portfolio",
+    framework: "Framework",
+    process: "Process",
+    contact: "Contact",
+    getStarted: "Get Started",
+  },
+  hero: {
+    badge: "Egypt & GCC",
+    title: "We partner with",
+    titleHighlight: "ambitious businesses",
+    titleEnd:
+      "across Egypt & the GCC to build powerful brands and drive measurable growth.",
+    ctaPrimary: "Get Started",
+    ctaSecondary: "Explore Services",
+    statGrowth: "Avg. client growth",
+    statMarkets: "Markets",
+    markets: "Egypt · UAE · KSA",
+  },
+  marquee: [
+    "Strategy Before Execution",
+    "Growth Beyond Borders",
+    "Strategy Before Execution",
+    "Growth Beyond Borders",
+  ],
+  expertise: {
+    eyebrow: "Our Expertise",
+    title: "Interactive Services",
+    marketing: {
+      tag: "Interactive Services",
+      title: "Marketing",
+      description:
+        "Performance-focused strategies built to scale brands and maximize ROI across every digital channel.",
+      items: [
+        "Social Media Management",
+        "Meta & Google Ads",
+        "Branding Strategy",
+        "Content Creation",
+        "SEO & Influencer Campaigns",
+      ],
+      cta: "Explore Marketing →",
+    },
+    software: {
+      tag: "Interactive Services",
+      title: "Software",
+      description:
+        "Powerful software solutions engineered for scalability, automation, and next-gen digital experiences.",
+      items: [
+        "Web Development",
+        "Mobile Applications",
+        "AI Integration & APIs",
+        "SaaS Platforms",
+        "UI/UX Design & CMS",
+      ],
+      cta: "Explore Software →",
+    },
+  },
+  approach: {
+    eyebrow: "Our Approach",
+    title: "Our Framework",
+    cta: "Explore Framework →",
+    steps: [
+      {
+        label: "HOW WE WORK",
+        title: "DISCOVER",
+        text: "We do not move until we know your business, market, and audience with complete clarity. Assumptions are not part of our process.",
+      },
+      {
+        label: "OUR FRAMEWORK",
+        title: "POSITION",
+        text: "We define where your brand stands and why it wins. Without sharp positioning, everything else is wasted effort.",
+      },
+      {
+        label: "OUR FRAMEWORK",
+        title: "BUILD",
+        text: "Every system, campaign, and piece of content is built with one standard: does it move the business forward? If not, it does not exist.",
+      },
+      {
+        label: "OUR FRAMEWORK",
+        title: "SCALE",
+        text: "Launch is not the finish line. We optimize relentlessly, expand deliberately, and push your brand into markets it was always capable of reaching.",
+      },
+    ],
+    imageAlt: "Strategic planning session",
+  },
+  whyUs: {
+    eyebrow: "Why Us",
+    line1: "Most agencies deliver work.",
+    line2: "We deliver growth.",
+    items: [
+      {
+        title: "Strategy First",
+        text: "Every decision is backed by deep research and clear strategic thinking.",
+      },
+      {
+        title: "Performance Driven",
+        text: "Results you can measure — from impressions to conversions to revenue.",
+      },
+      {
+        title: "Fast Execution",
+        text: "Speed is a competitive advantage. We move fast without breaking quality.",
+      },
+      {
+        title: "Long-Term Partner",
+        text: "We invest in your success as if it's our own — built for the long game.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "How We Work",
+    titleEm: "Our Process",
+    titleOutline: "& Framework",
+    description:
+      "Real work. Real results. A curated look at brands we've built, products we've launched, and businesses we've grown.",
+    filterAll: "All",
+    cardCta: "Watch The Project",
+    bottomText: "Want to see more of our work?",
+    bottomBtn: "View All Projects",
+    categories: [
+      "Brand Development",
+      "Digital Products",
+      "Marketing & Growth",
+      "Content Creation",
+      "Strategy & Planning",
+      "Brand & Creative",
+    ],
+    items: [
+      {
+        num: "01",
+        client: "Kromo Dev.",
+        location: "Greece",
+        service: "Brand Development",
+        tags: ["Brand Architecture", "Logo Design", "CI"],
+        color: "#C08D51",
+        bg: "linear-gradient(135deg, #2a1a0a 0%, #3d2409 50%, #1a0d04 100%)",
+        shape: "circle",
+      },
+      {
+        num: "02",
+        client: "Naguib Selim",
+        location: "Egypt",
+        service: "Digital Products",
+        tags: ["Web Development", "UI/UX", "React"],
+        color: "#96CDB0",
+        bg: "linear-gradient(135deg, #0a1f18 0%, #0d2a20 50%, #061410 100%)",
+        shape: "triangle",
+      },
+      {
+        num: "03",
+        client: "Gulf Brand Co.",
+        location: "UAE",
+        service: "Marketing & Growth",
+        tags: ["Ads", "Social Media", "Strategy"],
+        color: "#b7f5d3",
+        bg: "linear-gradient(135deg, #081a14 0%, #0f2b20 50%, #041008 100%)",
+        shape: "diamond",
+      },
+      {
+        num: "04",
+        client: "Luxe Cairo",
+        location: "Egypt",
+        service: "Content Creation",
+        tags: ["Media Production", "Content", "Photography"],
+        color: "#C08D51",
+        bg: "linear-gradient(135deg, #1a1208 0%, #2a1e0a 50%, #100b04 100%)",
+        shape: "hexagon",
+      },
+      {
+        num: "05",
+        client: "TechFlow",
+        location: "Saudi Arabia",
+        service: "Strategy & Planning",
+        tags: ["Growth Strategy", "KPIs", "Planning"],
+        color: "#96CDB0",
+        bg: "linear-gradient(135deg, #0c1f1a 0%, #122b24 50%, #061410 100%)",
+        shape: "circle",
+      },
+      {
+        num: "06",
+        client: "Orbit Studio",
+        location: "Egypt",
+        service: "Brand & Creative",
+        tags: ["Branding", "Identity", "Visual Design"],
+        color: "#fff",
+        bg: "linear-gradient(135deg, #101a16 0%, #1a2820 50%, #080f0c 100%)",
+        shape: "triangle",
+      },
+    ],
+  },
+  leadership: {
+    eyebrow: "Leadership",
+    title: "Meet The Team",
+    members: [
+      {
+        name: "Abo Taleb",
+        role: "FOUNDER & CEO",
+        badge: "CEO",
+        bio: "Building brands, systems, and scalable growth experiences across Egypt and the GCC.",
+      },
+      {
+        name: "Rana Eltorkey",
+        role: "MANAGER",
+        badge: "Operations",
+        bio: "Leading operations, communication, and execution with precision and consistency.",
+      },
+      {
+        name: "Osama Mohamed",
+        role: "ACCOUNT MANAGER",
+        badge: "Client Success",
+        bio: "Managing client relationships and performance with a strong focus on measurable outcomes.",
+      },
+    ],
+  },
+  recruiting: {
+    badge: "Now Recruiting",
+    title1: "WE ARE BUILDING A TEAM",
+    title2: "THAT MOVES FAST.",
+    description:
+      "We are not looking for employees. We are looking for builders, creators, and operators who want to grow with us across Egypt and the GCC.",
+    ctaPrimary: "JOIN GROWTH STATION →",
+    ctaSecondary: "See Open Roles",
+  },
+  footer: {
+    tagline:
+      "We partner with ambitious businesses across Egypt & the GCC to build powerful brands and drive measurable growth.",
+    navigation: "Navigation",
+    servicesTitle: "Services",
+    services: [
+      "Performance Marketing",
+      "Brand Strategy",
+      "Web Development",
+      "UI/UX Design",
+      "AI Solutions",
+    ],
+    contactTitle: "Get In Touch",
+    location: "Cairo, Egypt",
+    rights: "© 2026 Growth Station. All Rights Reserved.",
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions",
+  },
+  lang: {
+    switchToAr: "ع",
+    switchToEn: "EN",
+  },
+};
