@@ -1,0 +1,52 @@
+.about-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background-color: var(--color-gs-cream);
+}
+
+.about-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-content h2 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-gs-dark);
+  margin-bottom: 1.5rem;
+}
+
+.about-content p {
+  color: var(--color-gs-dark);
+  opacity: 0.8;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.about-image {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
