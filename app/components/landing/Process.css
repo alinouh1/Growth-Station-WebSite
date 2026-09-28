@@ -266,3 +266,377 @@
   justify-content: flex-start;
   padding-left: 18px;
 }
+
+.proc {
+  --top: 170px;
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 55%, #12342d 0%, #071614 68%);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.proc .p-particles,
+.proc .p-glow {
+  position: absolute;
+  pointer-events: none;
+}
+
+.proc .p-particles {
+  inset: 0;
+  background-image: radial-gradient(rgba(192, 141, 81, 0.2) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.2;
+}
+
+.proc .p-glow {
+  width: min(80vw, 760px);
+  aspect-ratio: 1;
+  top: 56%;
+  left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 141, 81, 0.14), transparent 70%);
+  transform: translate(-50%, -50%);
+}
+
+.proc .p-title {
+  position: absolute;
+  z-index: 5;
+  top: 34px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.proc .p-title span {
+  color: #c08d51;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.proc .p-title h1 {
+  margin: 8px 0 0;
+  color: #f8faf9;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.proc .p-wrap {
+  position: absolute;
+  inset: var(--top) 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proc .p-stage {
+  position: relative;
+  flex: none;
+  width: min(100%, 160svh);
+  aspect-ratio: 20 / 9;
+}
+
+.proc.vertical .p-stage {
+  width: min(100%, calc(66.6667svh - 103px));
+  aspect-ratio: 2 / 3;
+}
+
+.proc .p-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.proc .p-svg path {
+  fill: none;
+}
+
+.proc .road-shadow {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 128;
+}
+
+.proc .track {
+  stroke: #142823;
+  stroke-width: 112;
+}
+
+.proc .track-hl {
+  stroke: #1f3c35;
+  stroke-width: 84;
+  opacity: 0.75;
+}
+
+.proc .lane-base {
+  stroke: rgba(255, 228, 180, 0.48);
+  stroke-width: 6;
+  stroke-dasharray: 28 22;
+}
+
+.proc .lane-prog {
+  stroke: #c08d51;
+  stroke-width: 6;
+  stroke-dasharray: 28 22;
+}
+
+.proc.vertical .road-shadow {
+  stroke-width: 112;
+}
+
+.proc.vertical .track {
+  stroke-width: 100;
+}
+
+.proc.vertical .track-hl {
+  stroke-width: 74;
+}
+
+.proc.vertical .lane-base,
+.proc.vertical .lane-prog {
+  stroke-width: 9;
+  stroke-dasharray: 30 24;
+}
+
+.proc .st {
+  position: absolute;
+  z-index: 5;
+  width: 0;
+  height: 0;
+}
+
+.proc .st-icon {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: #122722;
+  font-size: 20px;
+  opacity: 0.45;
+  transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.proc .st.active .st-icon {
+  border-color: #c08d51;
+  background: #4d3417;
+  box-shadow: 0 0 24px rgba(192, 141, 81, 0.45);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.proc .st-label {
+  position: absolute;
+  width: max-content;
+  max-width: min(190px, var(--label-max-width, 190px));
+  color: #f8faf9;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.proc .st-label h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.proc .st-label p {
+  margin: 4px 0 0;
+  color: #b7c3bd;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.proc .st.active .st-label {
+  opacity: 1;
+}
+
+.proc .st.above .st-label {
+  bottom: 38px;
+  left: 0;
+  text-align: center;
+  transform: translate(-50%, 8px);
+}
+
+.proc .st.below .st-label {
+  top: 38px;
+  left: 0;
+  text-align: center;
+  transform: translate(-50%, -8px);
+}
+
+.proc .st.above.active .st-label,
+.proc .st.below.active .st-label {
+  transform: translate(-50%, 0);
+}
+
+.proc .train {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  width: 70px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  will-change: left, top, transform;
+}
+
+.proc .train::before {
+  position: absolute;
+  z-index: -1;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 141, 81, 0.3), transparent 68%);
+  content: '';
+}
+
+.proc .t-shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 60px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(6px);
+  transform: translateX(-50%);
+}
+
+.proc .t-body {
+  position: relative;
+  display: flex;
+  width: 64px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #286052, #17312e);
+  box-shadow: 0 0 20px rgba(192, 141, 81, 0.3);
+}
+
+.proc .t-light {
+  position: absolute;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd66b;
+  box-shadow: 0 0 14px #ffd66b;
+}
+
+.proc .t-window {
+  width: 12px;
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(150, 205, 176, 0.55);
+}
+
+.proc .t-wheel {
+  position: absolute;
+  bottom: -5px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  background: #252a28;
+}
+
+.proc .t-wheel.w1 {
+  left: 8px;
+}
+
+.proc .t-wheel.w2 {
+  right: 8px;
+}
+
+@media (max-width: 1024px) {
+  .proc {
+    --top: 130px;
+  }
+
+  .proc .p-title {
+    top: 22px;
+  }
+
+  .proc .p-title h1 {
+    font-size: clamp(2rem, 6vw, 2.4rem);
+  }
+
+  .proc .st-icon {
+    top: -19px;
+    left: -19px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .proc .st-label h3 {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .proc .st-label p {
+    font-size: 11px;
+  }
+
+  .proc .st.left .st-label {
+    top: 0;
+    right: 30px;
+    text-align: right;
+    transform: translate(8px, -50%);
+  }
+
+  .proc .st.right .st-label {
+    top: 0;
+    left: 30px;
+    text-align: left;
+    transform: translate(-8px, -50%);
+  }
+
+  .proc .st.left.active .st-label,
+  .proc .st.right.active .st-label {
+    transform: translate(0, -50%);
+  }
+}
+
+@media (max-width: 420px) {
+  .proc .p-title h1 {
+    font-size: 2rem;
+  }
+
+  .proc .st-label h3 {
+    font-size: 13px;
+  }
+
+  .proc .st-label p {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proc *,
+  .proc *::before,
+  .proc *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

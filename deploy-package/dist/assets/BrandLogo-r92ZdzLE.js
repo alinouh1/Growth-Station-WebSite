@@ -1,0 +1,1 @@
+import{j as t}from"./index-Cp64i6dp.js";function a({className:o="h-14 w-auto max-w-[180px]"}){return t.jsx("img",{src:"./images/logo2.png",alt:"Growth Station",className:`border-0 bg-transparent object-contain object-left outline-none ${o}`})}export{a as B};

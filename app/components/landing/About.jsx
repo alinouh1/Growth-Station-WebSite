@@ -15,34 +15,38 @@ function MobileStorySlider({ items, isRtl }) {
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [translateX, setTranslateX] = useState(0)
-  const autoSlideRef = useRef(null)
+  const [sliderInView, setSliderInView] = useState(false)
   const sliderRef = useRef(null)
 
-  // Auto-slide every 7 seconds
   useEffect(() => {
-    autoSlideRef.current = setInterval(() => {
+    const slider = sliderRef.current
+    if (!slider) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setSliderInView(entry.isIntersecting),
+      { threshold: 0.1 },
+    )
+    observer.observe(slider)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!sliderInView || isDragging) return
+
+    const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % items.length)
     }, 7000)
 
-    return () => clearInterval(autoSlideRef.current)
-  }, [items.length])
+    return () => clearInterval(timer)
+  }, [items.length, isDragging, sliderInView])
 
   // Trigger fade animation when content changes
   useEffect(() => {
     setFadeKey(prev => prev + 1)
   }, [currentIndex])
 
-  // Reset auto-slide timer on user interaction
-  const resetAutoSlide = () => {
-    clearInterval(autoSlideRef.current)
-    autoSlideRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % items.length)
-    }, 7000)
-  }
-
   const goToSlide = (index) => {
     setCurrentIndex(index)
-    resetAutoSlide()
   }
 
   // Touch/drag handlers
@@ -73,7 +77,6 @@ function MobileStorySlider({ items, isRtl }) {
     }
     
     setTranslateX(0)
-    resetAutoSlide()
   }
 
   const currentItem = items[currentIndex]

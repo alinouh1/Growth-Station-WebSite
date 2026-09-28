@@ -1,0 +1,1 @@
+import{r as t}from"./index-Cp64i6dp.js";function f(s=.12){const n=t.useRef(null),[o,i]=t.useState(!1);return t.useEffect(()=>{const e=n.current;if(!e)return;const r=new IntersectionObserver(([u])=>{u.isIntersecting&&(i(!0),r.unobserve(e))},{threshold:s,rootMargin:"0px 0px -40px 0px"});return r.observe(e),()=>r.disconnect()},[s]),{ref:n,visible:o}}export{f as u};

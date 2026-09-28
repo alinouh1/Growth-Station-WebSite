@@ -34,8 +34,9 @@ function useReveal() {
 
 // ── Hero Section ──
 function Hero() {
-  const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const upperGlowRef = useRef(null);
+  const lowerGlowRef = useRef(null);
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -46,9 +47,25 @@ function Hero() {
 
   useEffect(() => {
     if (isMobile) return; // Disable scroll animation on mobile
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    let frameId = 0;
+    const onScroll = () => {
+      if (frameId) return;
+      frameId = requestAnimationFrame(() => {
+        frameId = 0;
+        if (upperGlowRef.current) {
+          upperGlowRef.current.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+        }
+        if (lowerGlowRef.current) {
+          lowerGlowRef.current.style.transform = `translateY(${window.scrollY * -0.1}px)`;
+        }
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameId) cancelAnimationFrame(frameId);
+    };
   }, [isMobile]);
 
   return (
@@ -68,17 +85,15 @@ function Hero() {
       {/* bg circles with parallax - disabled on mobile */}
       {!isMobile && (
         <>
-          <div style={{
+          <div ref={upperGlowRef} style={{
             position:"absolute", borderRadius:"50%", pointerEvents:"none",
             width:700, height:700, top:-120, right:-180,
             background:"radial-gradient(circle,rgba(150,205,176,0.18) 0%,rgba(19,84,84,0.22) 40%,transparent 70%)",
-            transform:`translateY(${scrollY * 0.15}px)`,
           }} />
-          <div style={{
+          <div ref={lowerGlowRef} style={{
             position:"absolute", borderRadius:"50%", pointerEvents:"none",
             width:380, height:380, bottom:30, left:60,
             background:"radial-gradient(circle,rgba(192,141,81,0.12) 0%,rgba(19,84,84,0.18) 50%,transparent 70%)",
-            transform:`translateY(${scrollY * -0.1}px)`,
           }} />
         </>
       )}

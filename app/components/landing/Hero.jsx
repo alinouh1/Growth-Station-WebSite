@@ -1,5 +1,4 @@
 import { useReveal } from "../../hooks/useReveal"
-import { BrandLogo } from "./BrandLogo"
 
 export function Hero() {
   const { ref, visible } = useReveal()
@@ -10,7 +9,28 @@ export function Hero() {
       ref={ref}
       className="relative min-h-screen overflow-hidden flex items-start"
     >
-      <div className="fixed inset-0 bg-[url('/images/background-mobile-compressed.jpg')] bg-cover bg-center bg-no-repeat sm:bg-[url('/images/back-compressed.jpg')]" loading="lazy"  />
+      {/*
+        ✅ المشكلة الأساسية هنا:
+        1) الصورة كانت CSS background-image على div، والمتصفح مش بيكتشفها إلا بعد ما ينزّل ويحلل الـ CSS.
+        2) loading="lazy" على div مالوهاش أي تأثير (بيشتغل على <img> بس).
+        3) الصورة JPG تقيلة.
+
+        الحل: <picture> + <img> حقيقية بـ WebP، و fetchPriority="high" عشان المتصفح يبدأ ينزّلها فورًا.
+        نفس الشكل بالظبط (fixed + cover + center) فمفيش أي تغيير في التصميم.
+        ملحوظة: لو نسخة React عندك أقدم من 18.3 وطلع warning على fetchPriority، اكتبها بحروف صغيرة fetchpriority.
+      */}
+      <picture>
+        <source media="(min-width: 640px)" srcSet="/images/back.webp" type="image/webp" />
+        <source srcSet="/images/background-mobile.webp" type="image/webp" />
+        <img
+          src="/images/background-mobile-compressed.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="pointer-events-none fixed inset-0 h-full w-full object-cover object-center"
+        />
+      </picture>
 
       <div
         className="relative flex max-w-7xl flex-col items-start justify-start text-left px-7 pt-8 sm:pt-20 ml-0 mr-auto"
@@ -43,7 +63,8 @@ export function Hero() {
             <br />
             and drive measurable growth.
           </h2>
-          <div className="mt-12 sm:mt-10 flex flex-nowrap items-center justify gap-3 sm:gap-4">
+          {/* تعديل بسيط: justify كانت كلاس غلط (مش موجود)، خليتها justify-start وهي نفس السلوك الفعلي */}
+          <div className="mt-12 sm:mt-10 flex flex-nowrap items-center justify-start gap-3 sm:gap-4">
             <a
               href="/contact"
               className="rounded-full bg-gs-gold px-5 py-2 text-[10px] sm:text-xs sm:px-6 sm:py-2.5 sm:text-sm font-semibold text-white shadow-lg shadow-gs-gold/30 transition-all hover:-translate-y-0.5 hover:bg-gs-teal hover:shadow-gs-teal/30"

@@ -1,0 +1,1 @@
+import{r as e}from"./index-1_q_4gd1.js";var t=e();function n({className:e=`h-14 w-auto max-w-[180px]`}){return(0,t.jsx)(`img`,{src:`/images/logo2.png`,alt:`Growth Station`,className:`border-0 bg-transparent object-contain object-left outline-none ${e}`})}export{n as t};

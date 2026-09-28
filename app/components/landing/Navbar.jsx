@@ -73,9 +73,9 @@ export function Navbar() {
       }
 
       if (shouldUseFirstImage) {
-        logoImg.src = '/images/ali logo.png 1.svg'
+        logoImg.src = '/images/ali%20logo.png%201.svg'
       } else {
-        logoImg.src = '/images/ali logo.png 2.svg'
+        logoImg.src = '/images/ali%20logo.png%20.svg'
         const bgColor = window.getComputedStyle(document.body).backgroundColor
         logoImg.style.filter = bgColor === 'rgb(22, 39, 39)' ? 'invert(1)' : 'none'
       }
@@ -152,7 +152,7 @@ export function Navbar() {
         {/* Logo image */}
         <img
           ref={logoImgRef}
-          src="/images/ali logo.png 1.svg"
+          src="/images/ali%20logo.png%20.svg"
           alt="Growth Station logo"
           className="nav-logo-img"
         />

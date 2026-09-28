@@ -5,31 +5,24 @@
 - SSH access to the server
 - Git installed (optional)
 
-## Local Build
+## Build and Deploy to Hostinger
 
-1. Build the project:
+Prepare the current Vite application and deployment package:
+
 ```bash
-cd /Users/alimaysaranouhgmail.com/Desktop/growth\ web/Growth-station
 npm run build
+./prepare-deploy.sh
 ```
 
-2. This creates:
-- `build/client/` - Static assets
-- `build/server/` - Server files
-
-## Files to Upload to Hostinger
-
-Upload these files/folders to your Hostinger server:
-```
-build/
-package.production.json (rename to package.json on server)
-```
+Upload `dist/`, `server.mjs`, and `package.json` from `deploy-package/` to the
+same directory on Hostinger. Do not upload the legacy `build/` directory; it
+contains an older application build.
 
 ## Server Setup on Hostinger
 
 1. **Upload files via FTP or SSH:**
-   - Upload entire `build/` folder
-   - Upload `package.production.json` as `package.json`
+   - Upload the `dist/` folder
+   - Upload `server.mjs` and `package.json`
 
 2. **SSH into your Hostinger server:**
 ```bash
@@ -53,7 +46,7 @@ npm install pm2
 
 6. **Start the application:**
 ```bash
-pm2 start build/server/index.js --name growth-station
+pm2 start npm --name growth-station -- start
 ```
 
 7. **Save PM2 configuration:**
@@ -86,10 +79,12 @@ Vercel is much easier and free:
 - Ensure port is correct (default: 3000)
 
 **If build fails:**
-- Ensure Node.js version is >= 18.0.0
+- Use Node.js `^20.19.0` or `>=22.12.0` for Vite 8 build tasks.
+- The deployed static server runtime remains compatible with Node.js `>=18.0.0` (`package.production.json`).
 - Run `npm install` locally first
 - Check for missing dependencies
 
-**If images don't load:**
-- Ensure `public/` folder is uploaded
-- Check image paths in code
+**If changed images still look old:**
+- Confirm the uploaded `dist/images/` files have the latest timestamps.
+- Restart the Node process and hard-refresh the browser/CDN cache.
+- Unhashed static files are served with revalidation headers.

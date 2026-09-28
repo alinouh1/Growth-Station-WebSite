@@ -3,29 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Growth Station — Strategic growth partner for ambitious businesses across Egypt & the GCC." />
     <title>Growth Station</title>
-    <link rel="icon" type="image/png" href="./images/logo2.png" />
+    <link rel="icon" type="image/png" href="/images/logo2.png" />
+
+    <!-- ✅ تغيير 1: connection مبكر لسيرفرات جوجل (كانوا موجودين، سيبناهم) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="preload" href="./images/background-mobile-compressed.jpg" as="image" />
-    <link rel="preload" href="./images/back-compressed.jpg" as="image" media="(min-width: 640px)" />
-    <style>
-      /* Critical CSS for above-the-fold content */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Cairo', sans-serif;
-        background-color: #f5f5f0;
-      }
-      #root {
-        min-height: 100vh;
-      }
-    </style>
-    <script type="module" crossorigin src="./assets/index-DD1AskJ9.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B0p9Cgsx.css">
+
+    <!--
+      ✅ تغيير 2: كان عندك 3 ملفات CSS للخطوط، كل واحد render-blocking (المتصفح مش بيرسم حاجة لحد ما ينزلهم).
+      دمجتهم في request واحد، وحمّلتهم بطريقة non-blocking (preload ثم تحويله لـ stylesheet)
+      عشان الصفحة تترسم فورًا بخط بديل، وبعدين الخط الحقيقي يتبدّل (display=swap).
+      لو لقيت الـ CLS زاد في PageSpeed، ارجع لـ <link rel="stylesheet"> عادي بنفس الـ URL.
+    -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap"
+      />
+    </noscript>
+
+    <!--
+      ✅ تغيير 3: preload لصورة الـ Hero (هي أكبر عنصر = الـ LCP).
+      لازم الـ href والـ media يطابقوا بالظبط اللي في <picture> جوه Hero.jsx،
+      وإلا المتصفح هينزّل الصورة مرتين. بقت WebP بدل JPG.
+    -->
+    <link rel="preload" as="image" href="/images/background-mobile.webp" type="image/webp" media="(max-width: 639px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/back.webp" type="image/webp" media="(min-width: 640px)" fetchpriority="high" />
+
+    <style>body{background-color:#f5f5f0;margin:0;padding:0;font-family:Cairo,sans-serif}#root{min-height:100vh}</style>
+    <script type="module" crossorigin src="/assets/index-1_q_4gd1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BvE1ie2B.css">
   </head>
   <body>
     <div id="root"></div>

@@ -1,41 +1,17 @@
 #!/bin/bash
+set -euo pipefail
 
-# Deployment Preparation Script for Growth Station
-# This script prepares files for Hostinger deployment
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEPLOY_FOLDER="$ROOT_DIR/deploy-package"
 
-echo "🚀 Preparing files for deployment..."
+cd "$ROOT_DIR"
+npm run build
 
-# Create deployment folder
-DEPLOY_FOLDER="deploy-package"
-rm -rf $DEPLOY_FOLDER
-mkdir -p $DEPLOY_FOLDER
+rm -rf "$DEPLOY_FOLDER/dist"
+mkdir -p "$DEPLOY_FOLDER/dist"
+cp -R "$ROOT_DIR/dist/." "$DEPLOY_FOLDER/dist/"
+cp "$ROOT_DIR/server.mjs" "$DEPLOY_FOLDER/server.mjs"
+cp "$ROOT_DIR/package.production.json" "$DEPLOY_FOLDER/package.json"
 
-# Copy build folder
-echo "📦 Copying build folder..."
-cp -r build $DEPLOY_FOLDER/
-
-# Copy production package.json
-echo "📝 Copying production package.json..."
-cp package.production.json $DEPLOY_FOLDER/package.json
-
-# Copy .env.example
-echo "⚙️  Copying environment example..."
-cp .env.example $DEPLOY_FOLDER/.env.example
-
-# Create .gitignore for deployment
-echo "🔒 Creating .gitignore..."
-cat > $DEPLOY_FOLDER/.gitignore << EOL
-node_modules/
-.env
-*.log
-EOL
-
-echo "✅ Deployment package ready in: $DEPLOY_FOLDER"
-echo ""
-echo "📋 Next steps:"
-echo "1. Upload the contents of $DEPLOY_FOLDER to Hostinger"
-echo "2. On Hostinger, run: npm install --production"
-echo "3. Start the server: pm2 start build/server/index.js --name growth-station"
-echo ""
-echo "📁 Files to upload:"
-ls -lh $DEPLOY_FOLDER/
+printf 'Deployment package is ready in %s\n' "$DEPLOY_FOLDER"
+printf 'Upload dist/, server.mjs, and package.json. Then run npm install --production and npm start.\n'
